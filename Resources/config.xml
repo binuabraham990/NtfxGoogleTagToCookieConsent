@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+
+    <elements>
+        <element type="boolean" scope="shop">
+            <name>enable_plugin</name>
+            <label lang="de">Enable Plugin</label>
+            <label lang="en">Enable Plugin</label>
+            <value>true</value>
+            <description lang="de">Enable plugin for this shop</description>
+            <description lang="en">Enable plugin for this shop</description>
+        </element>
+        <element type="text" scope="shop">
+            <name>google_tag_id</name>
+            <label lang="de">Google Tag ID</label>
+            <label lang="en">Google Tag ID</label>
+            <description lang="de">Google Tag ID for this shop</description>
+            <description lang="en">Google Tag ID for this shop</description>
+        </element>
+    </elements>
+
+</config>

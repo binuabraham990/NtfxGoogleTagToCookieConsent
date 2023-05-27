@@ -5,31 +5,31 @@
 
     <script>var ntfxGoogleTagConfig = window.ntfxGoogleTagConfig = {$ntfxGoogleTagConfig|json_encode};</script>
     <script>
-        // Define dataLayer and the gtag function.
         window.dataLayer = window.dataLayer || [];
-        function gtag(){literal}{{/literal}dataLayer.push(arguments);{literal}}{/literal}
-
-        // Default ad_storage to 'denied'.
-        gtag('consent', 'default', {
-            'ad_storage': 'denied'
-        });
+        function gtag(){literal} {{/literal}
+            dataLayer.push(arguments);{literal}
+        }{/literal}
     </script>
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){literal}{{/literal}w[l]=w[l]||[];w[l].push({literal}{{/literal}'gtm.start':
-    new Date().getTime(),event:'gtm.js'{literal}}{/literal});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    {literal}}{/literal})(window,document,'script','dataLayer','{$ntfxGoogleTagConfig.googleId}');</script>
-    <!-- End Google Tag Manager -->
-    
-    <!-- Update this section based on your business requirements -->
     <script>
         var ntfxTagManager = {
             consentGranted: function () {
-                gtag('consent', 'update', {
-                    'ad_storage': 'granted'
-                });
+                const gtmScript = document.createElement('script');
+                gtmScript.setAttribute("data-name", "ntfx-google-tag");
+                gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id={$ntfxGoogleTagConfig.googleId}';
+                document.head.append(gtmScript);
+                window.gtagConfig = {
+                    'anonymize_ip': 'false',
+                    'cookie_domain': 'none',
+                    'cookie_prefix': '_ntfx_ga_track'
+                };
+                gtag('js', new Date());
+                gtag('config', '{$ntfxGoogleTagConfig.googleId}', window.gtagConfig);
+            },
+            revokeConsent: function () {
+                const gtmScript = document.querySelector('script[data-name="ntfx-google-tag"]');
+                if (gtmScript) {
+                    gtmScript.remove();
+                }
             }
         }
     </script>
